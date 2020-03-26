@@ -1,0 +1,28 @@
+.paper-container {
+  position: relative;
+  width: 750px;
+  background: white;
+  padding: 60px 40px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 770px) {
+    width: calc(100% - 20px);
+    padding: 40px;
+    min-height: 400px;
+  }
+
+  /* The top layer shadow */
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15),
+    /* The second layer */ 0 -10px 0 -5px rgb(245, 245, 245),
+    /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.125),
+    /* The third layer */ 0 -20px 0 -10px #eee,
+    /* The third layer shadow */ 0 -20px 1px -9px rgba(0, 0, 0, 0.1);
+}
+
+.slide-in {
+  animation: slide-in 1s;
+}
