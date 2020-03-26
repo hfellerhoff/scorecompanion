@@ -49,6 +49,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "deploy": "yarn build && netlify deploy --dir=public --prod",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

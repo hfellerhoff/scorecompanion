@@ -35,7 +35,7 @@ const Hero = (props: Props) => {
             disabled
             size='large'
             shape='round'
-            icon={<SearchOutlined />}
+            // icon={<SearchOutlined />}
           >
             Coming Soon!
           </Button>
