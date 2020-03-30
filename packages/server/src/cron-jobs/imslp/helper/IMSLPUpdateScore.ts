@@ -3,6 +3,7 @@ import { IMSLPWork, IMSLPResponse } from '../typescript/IMSLPInterfaces';
 import { getRepository, Connection } from 'typeorm';
 import { imslpFetchScoresFromWork } from './IMSLPFetchScoresFromWork';
 import { Score } from '../../../entity/Score';
+import Sites from '../../../typescript/Sites';
 
 export const imslpUpdateScore = async (
   connection: Connection,
@@ -49,6 +50,8 @@ export const imslpUpdateScore = async (
     const work = new Work();
     work.title = imslpWork.title;
     work.composer = imslpWork.composer;
+    work.workUrl = imslpWork.link;
+    work.site = Sites.IMSLP;
 
     // Add the work to the database
     await connection.manager.save(work);

@@ -1,9 +1,7 @@
+@import '../styles/animations';
+
 .hero {
   &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     padding-top: 100px;
     min-height: 100vh;
     display: flex;
@@ -14,19 +12,17 @@
     @media screen and (max-width: 770px) {
       padding-top: 30px;
     }
+
+    animation: fade-in 1s;
+  }
+
+  &__fade-to-search {
+    animation: fade-to-search 0.25s;
   }
 
   &__title-text {
     @media screen and (max-width: 770px) {
       max-width: 350px;
     }
-  }
-
-  &__shadow {
-    position: relative;
-    background: white;
-    width: 100vw;
-    height: 20px;
-    box-shadow: 0px -5px 5px -4px rgba(0, 0, 0, 0.2);
   }
 }

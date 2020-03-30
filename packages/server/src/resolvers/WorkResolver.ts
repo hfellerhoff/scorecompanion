@@ -46,8 +46,10 @@ export class WorkResolver {
     return connection
       .getRepository(Work)
       .createQueryBuilder('work')
-      .where('work.title like :title', { title: '%' + title + '%' })
-      .andWhere('work.composer like :composer', {
+      .where('LOWER(work.title) like LOWER(:title)', {
+        title: '%' + title + '%',
+      })
+      .andWhere('LOWER(work.composer) like LOWER(:composer)', {
         composer: '%' + composer + '%',
       })
       .leftJoinAndSelect('work.scores', 'score')

@@ -1,0 +1,49 @@
+@import '../../styles/animations';
+
+.search {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffbb96;
+    height: 100%;
+    width: 100%;
+    padding: 0 0;
+  }
+
+  &__search-container {
+    z-index: 1;
+    margin: 20px 0 0px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    width: 600px;
+    padding: 15px 20px 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+
+    @media screen and (max-width: 640px) {
+      width: calc(100% - 40px);
+    }
+
+    animation: slide-in-from-top 0.5s;
+  }
+
+  &__content {
+    background: #ffba96;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__logo-click-handler:hover {
+    cursor: pointer;
+  }
+
+  &__fade-to-home {
+    animation: fade-to-home 0.25s;
+  }
+}

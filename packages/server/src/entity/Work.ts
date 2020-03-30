@@ -23,6 +23,14 @@ export class Work extends BaseEntity {
   @Column({ nullable: false })
   composer: string;
 
+  @Field()
+  @Column({ nullable: false })
+  site: string;
+
+  @Field()
+  @Column({ nullable: true })
+  workUrl: string;
+
   @Field(() => [Score])
   @OneToMany(
     _type => Score,

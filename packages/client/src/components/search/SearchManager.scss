@@ -1,0 +1,21 @@
+.search-manager {
+  &__loading {
+    margin-top: 100px;
+  }
+
+  &__error {
+    margin-top: 20px;
+    width: 600px;
+    background: rgb(255, 231, 231);
+    border: 2px solid #fa7e75;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+
+    animation: slide-in 1s;
+
+    @media screen and (max-width: 640px) {
+      margin: 20px;
+      width: calc(100% - 40px);
+    }
+  }
+}

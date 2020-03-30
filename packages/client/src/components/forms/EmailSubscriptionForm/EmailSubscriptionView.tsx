@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import { Form, Button } from 'antd';
 import { withFormik, FormikErrors, FormikProps, Field } from 'formik';
 import { emailValidationSchema } from '@scorecompanion/common';
-import InputField from '../../shared/InputField';
+import InputField from '../../input/InputField';
 
 export interface EmailFormValues {
   email: string;

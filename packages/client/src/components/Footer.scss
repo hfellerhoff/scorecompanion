@@ -1,0 +1,45 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content-container {
+    width: 750px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    margin-left: 20px;
+    margin-top: 6px;
+
+    font-size: 22px;
+    font-weight: 300;
+    color: whitesmoke;
+    border-bottom: 2px solid transparent;
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  &__name:hover {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  &__logo {
+    font-size: 12px;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  &__logo:hover {
+    box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}

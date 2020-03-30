@@ -5,8 +5,8 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -17,20 +17,13 @@ const Layout: React.FC = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: 20,
-      }}
-    >
+    <div>
       <main>{children}</main>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

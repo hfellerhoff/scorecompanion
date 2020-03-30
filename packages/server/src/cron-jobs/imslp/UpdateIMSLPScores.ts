@@ -14,8 +14,8 @@ export const updateIMSLPScores = async () => {
   const formatType = 'json'; // Options: pretty | json | php | wddx
 
   let start = 0; // Start index of request
-  let limit = 100; // Results per request. Max limit = 1000
-  const stopLimit = 100; // Stop after this many individual work fetches
+  let limit = 1000; // Results per request. Max limit = 1000
+  const stopLimit = 160000; // Stop after this many individual work fetches
   const batchSize = 25; // Amount of promises to evaluate at the same time. A large batch size risks a request-timeout if they cannot be evaluated quickly enough.
   let shouldFetch = true; // Should another request be made
 

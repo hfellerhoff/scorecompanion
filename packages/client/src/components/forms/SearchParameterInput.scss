@@ -1,0 +1,52 @@
+.search-parameter-input {
+  &__form {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+    }
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+
+  &__input-container {
+    margin-top: 5px;
+
+    &--title {
+      flex: 3;
+      margin-right: 5px;
+      @media screen and (max-width: 640px) {
+        flex: 1;
+        margin-right: 0px;
+        width: 100%;
+      }
+    }
+
+    &--composer {
+      flex: 2;
+      margin-left: 5px;
+      @media screen and (max-width: 640px) {
+        flex: 1;
+        margin-left: 0px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__input {
+    background: #f1f2f6;
+    border: none;
+    border-radius: 5px;
+
+    .ant-input {
+      margin-left: 5px;
+      background: #f1f2f6;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import '../../styles/animations';
+
+.search-state-display {
+  &__container {
+    margin-top: 150px;
+
+    @media screen and (max-width: 640px) {
+      @media screen and (max-height: 650px) {
+        margin-top: 0;
+        position: absolute;
+        bottom: 15vh;
+        left: 50%;
+        margin-left: -150px;
+      }
+    }
+
+    // @media screen and (max-height: 650px) {
+    //   margin-top: 0;
+    //   position: absolute;
+    //   bottom: 15vh;
+    //   left: 50%;
+    //   margin-left: -150px;
+    // }
+
+    text-align: center;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    animation: fade-in 1s;
+  }
+
+  &__text {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #545456;
+  }
+
+  &__icon-container {
+    background: #545456;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  &__icon {
+    font-size: 40px;
+    color: white;
+
+    animation: fade-in 0.3s;
+  }
+
+  &__loading {
+    animation: fade-in 0.3s;
+  }
+}

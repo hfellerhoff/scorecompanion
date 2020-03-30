@@ -4,7 +4,7 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { WorkResolver } from './resolvers/WorkResolver';
-// import { updateIMSLPScores } from './cron-jobs/imslp/UpdateIMSLPScores';
+import { updateIMSLPScores } from './cron-jobs/imslp/UpdateIMSLPScores';
 
 (async () => {
   const app = express();
@@ -22,11 +22,11 @@ import { WorkResolver } from './resolvers/WorkResolver';
     context: ({ req, res }) => ({ req, res }),
   });
 
-  apolloServer.applyMiddleware({ app, cors: false });
+  apolloServer.applyMiddleware({ app, cors: true });
   const port = process.env.PORT || 4000;
   app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}/graphql.`);
-    // console.log('Fetching scores from IMSLP...');
-    // updateIMSLPScores();
+    console.log(`Server started at http://localhost:${port}/graphql .`);
+    console.log('Fetching scores from IMSLP...');
+    updateIMSLPScores();
   });
 })();

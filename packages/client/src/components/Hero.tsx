@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { volcano, red } from '@ant-design/colors';
 import { Typography, Button } from 'antd';
@@ -6,10 +6,13 @@ const { Title, Text } = Typography;
 import './Hero.scss';
 import Logo from './icons/Logo';
 import PaperContainer from './containers/PaperContainer';
+import { Link, navigate } from 'gatsby';
 
 interface Props {}
 
 const Hero = (props: Props) => {
+  const [heroRef, setHeroRef] = useState<HTMLDivElement | null>(null);
+
   return (
     <>
       <div
@@ -17,6 +20,7 @@ const Hero = (props: Props) => {
         style={{
           background: `linear-gradient(${volcano[3]}, ${red[3]})`,
         }}
+        ref={div => setHeroRef(div)}
       >
         <PaperContainer horizontal centerText fadeIn>
           <Logo title size={200} className='hero__logo' />
@@ -32,12 +36,19 @@ const Hero = (props: Props) => {
           <div style={{ height: 30 }} />
           <Button
             type='primary'
-            disabled
+            // disabled
             size='large'
             shape='round'
-            // icon={<SearchOutlined />}
+            icon={<SearchOutlined />}
+            onClick={() => {
+              if (heroRef)
+                heroRef.className = 'hero__background hero__fade-to-search';
+              setTimeout(() => {
+                navigate('/search');
+              }, 225);
+            }}
           >
-            Coming Soon!
+            Search Now
           </Button>
         </PaperContainer>
         <PaperContainer horizontal centerText fadeIn>
