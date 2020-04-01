@@ -80,7 +80,12 @@ const SEO = ({ description = '', lang = 'en', meta = [], title }: Props) => {
           content: metaDescription,
         },
       ].concat(meta as any)}
-    />
+    >
+      <meta
+        property='og:image'
+        content={require('../../static/logo-tagline.png')}
+      />
+    </Helmet>
   );
 };
 
