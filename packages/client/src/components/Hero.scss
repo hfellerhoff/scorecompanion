@@ -1,8 +1,9 @@
 @import '../styles/animations';
+@import './layout/Header.scss';
 
 .hero {
   &__background {
-    padding-top: 100px;
+    padding-top: 100px; //100px
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -11,12 +12,17 @@
 
     @media screen and (max-width: 770px) {
       padding-top: 30px;
+
+      h1 {
+        font-size: 32px;
+      }
     }
 
     animation: fade-in 1s;
   }
 
   &__fade-to-search {
+    opacity: 0;
     animation: fade-to-search 0.25s;
   }
 

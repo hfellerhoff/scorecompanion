@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  CoffeeOutlined,
+  ControlOutlined,
+  StarOutlined,
+  DollarOutlined,
+} from '@ant-design/icons';
 import { volcano, red } from '@ant-design/colors';
 import { Typography, Button } from 'antd';
 const { Title, Text } = Typography;
 import './Hero.scss';
 import Logo from './icons/Logo';
 import PaperContainer from './containers/PaperContainer';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
+import LandingPageFeature from './LandingPageFeature';
 
-interface Props {}
+interface Props {
+  onSearchPress: () => void;
+}
 
-const Hero = (props: Props) => {
-  const [heroRef, setHeroRef] = useState<HTMLDivElement | null>(null);
-
+const Hero = ({ onSearchPress }: Props) => {
   return (
     <>
       <div
@@ -20,7 +27,6 @@ const Hero = (props: Props) => {
         style={{
           background: `linear-gradient(${volcano[3]}, ${red[3]})`,
         }}
-        ref={div => setHeroRef(div)}
       >
         <PaperContainer horizontal centerText fadeIn>
           <Logo title size={200} className='hero__logo' />
@@ -36,23 +42,43 @@ const Hero = (props: Props) => {
           <div style={{ height: 30 }} />
           <Button
             type='primary'
-            // disabled
             size='large'
             shape='round'
             icon={<SearchOutlined />}
             onClick={() => {
-              if (heroRef)
-                heroRef.className = 'hero__background hero__fade-to-search';
+              // if (heroRef)
+              //   heroRef.className = 'hero__background hero__fade-to-search';
+              onSearchPress();
               setTimeout(() => {
                 navigate('/search');
-              }, 225);
+              }, 250);
             }}
           >
             Search Now
           </Button>
         </PaperContainer>
+        <PaperContainer centerText horizontal fadeIn>
+          <Title style={{ marginBottom: 0 }}>Why Score Companion?</Title>
+          <LandingPageFeature
+            icon={<SearchOutlined />}
+            title='One, Centralized, Score-Finding Machine'
+            description="There's no more need scour through IMSLP or search site after
+                site looking for the best score - Score Companion takes care of
+                all of that for you."
+          />
+          <LandingPageFeature
+            icon={<ControlOutlined />}
+            title='Fine-Tuned Control'
+            description="Score Companion gives you the tools to quickly find the score you're looking for, with advanced search filtering and detailed score information."
+          />
+          <LandingPageFeature
+            icon={<DollarOutlined />}
+            title='Free Now, Free Forever'
+            description="Score Companion was built to allow musicians to find the best, most affordable score for them. We will never charge you to use Score Companion, so you're free to search away!"
+          />
+        </PaperContainer>
         <PaperContainer horizontal centerText fadeIn>
-          <Title>Ready to get started?</Title>
+          <Title>Want to learn more?</Title>
           <Text>
             Score Companion is under active development. Subscribe to be
             notified when new features and sites are added, and to join us on
@@ -64,6 +90,38 @@ const Hero = (props: Props) => {
             frameBorder={0}
             scrolling='no'
           ></iframe>
+        </PaperContainer>
+        <PaperContainer horizontal centerText fadeIn>
+          <Title>Find Score Companion useful?</Title>
+          <Text>
+            Consider buying me a coffee! Every little bit helps to make sure I
+            can continue to improve and develop Score Companion for years to
+            come.
+          </Text>
+          <a
+            href='https://ko-fi.com/henryfellerhoff'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <div
+              style={{
+                marginTop: 40,
+                background: '#F25D5E',
+                color: 'white',
+                border: 'none',
+                padding: '5px 20px',
+                fontWeight: 500,
+                borderRadius: 50,
+              }}
+            >
+              <img
+                src={require('../images/kofi.png')}
+                alt='Ko-Fi'
+                style={{ height: 32, marginRight: 10 }}
+              />
+              Buy me a coffee
+            </div>
+          </a>
         </PaperContainer>
       </div>
     </>

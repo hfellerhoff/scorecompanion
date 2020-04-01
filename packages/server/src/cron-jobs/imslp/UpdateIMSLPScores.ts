@@ -33,7 +33,7 @@ export const updateIMSLPScores = async () => {
       // imslpUpdateScore(connection, work);
       promises.push(imslpUpdateScore(connection, work));
       if (i % batchSize === 0) {
-        console.log(`~~~~~ Iteration ${i}, evaluating all promises ~~~~~`);
+        // console.log(`~~~~~ Iteration ${i}, evaluating all promises ~~~~~`);
         await Promise.all(promises);
         promises = [];
       }

@@ -1,11 +1,11 @@
 import React from 'react';
 import Text from 'antd/lib/typography/Text';
 import './SearchStateDisplay.scss';
-import { SearchOutlined, StopOutlined } from '@ant-design/icons';
+import { SearchOutlined, StopOutlined, CheckOutlined } from '@ant-design/icons';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 
 interface Props {
-  state: 'no-input' | 'no-results' | 'loading';
+  state: 'no-input' | 'no-results' | 'loading' | 'finished';
 }
 
 const NoResults = ({ state }: Props) => {
@@ -43,6 +43,20 @@ const NoResults = ({ state }: Props) => {
             </div>
           </div>
           <Text className='search-state-display__text'>Loading results...</Text>
+        </div>
+      );
+
+    case 'finished':
+      return (
+        <div className='search-state-display__container--end '>
+          <div className='search-state-display__icon-container'>
+            <div className='search-state-display__loading'>
+              <CheckOutlined className='search-state-display__icon' />
+            </div>
+          </div>
+          <Text className='search-state-display__text'>
+            That's it! You've reached the end.
+          </Text>
         </div>
       );
   }

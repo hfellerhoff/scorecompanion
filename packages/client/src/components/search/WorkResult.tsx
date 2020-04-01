@@ -21,6 +21,10 @@ export interface WorkResultProps {
   scores: ScoreProps[];
 }
 
+interface Props extends WorkResultProps {
+  className: string;
+}
+
 const Score = ({ title, description, url }: ScoreProps) => {
   return (
     <a
@@ -46,7 +50,8 @@ const WorkResult = ({
   scores,
   site,
   workUrl,
-}: WorkResultProps) => {
+  className,
+}: Props) => {
   const numberOfScores = scores.length;
   let currentScore = 0;
 
@@ -66,7 +71,7 @@ const WorkResult = ({
   });
 
   return (
-    <div className='work-result__container'>
+    <div className={`work-result__container ${className}`}>
       <div className='work-result__text-container'>
         <Text className='work-result__title'>{title}</Text>
         <Text className='work-result__composer'>{composer}</Text>
@@ -82,13 +87,14 @@ const WorkResult = ({
           if (numberOfScores - 1 !== currentScore) {
             currentScore += 1;
             return (
-              <div key={score.url}>
+              <div key={v4()}>
                 <Score {...score} />
                 <div className='work-result__score__divider' />
               </div>
             );
+          } else {
+            return <Score key={v4()} {...score} />;
           }
-          return <Score key={score.url} {...score} />;
         })}
       </div>
       <div className='work-result__badges'></div>

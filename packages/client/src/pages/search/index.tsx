@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import GatsbyLayout from '../../components/layout';
-import SEO from '../../components/seo';
-import { Layout } from 'antd';
+import Layout from '../../components/layout/Layout';
 import SearchParameterInput, {
   FormVariables,
 } from '../../components/forms/SearchParameterInput';
 import Logo from '../../components/icons/Logo';
-const { Header, Content } = Layout;
 import { navigate } from 'gatsby';
+import { Layout as AntDesignLayout } from 'antd';
+const { Header } = AntDesignLayout;
 
 import './Search.scss';
 import SearchManager from '../../components/search/SearchManager';
+import PageTitles from '../../typescript/PageTitles';
 
 const Search = () => {
   const [layoutClassName, setLayoutClassName] = useState('');
@@ -25,12 +25,11 @@ const Search = () => {
     setComposer(values.composer || '');
   };
 
-  console.log(isTyping);
-
   return (
-    <GatsbyLayout>
-      <SEO title='Search' />
-      <Layout className={layoutClassName}>
+    <Layout
+      title={PageTitles.Search}
+      className={`search ${layoutClassName}`}
+      header={
         <Header className='search__header'>
           <div className='search__search-container'>
             <div
@@ -39,7 +38,7 @@ const Search = () => {
                 setLayoutClassName('search__fade-to-home');
                 setTimeout(() => {
                   navigate('/');
-                }, 225);
+                }, 250);
               }}
             >
               <Logo size={150} title />
@@ -50,16 +49,13 @@ const Search = () => {
             />
           </div>
         </Header>
-        <Content className='search__content'>
-          <div>
-            <SearchManager
-              variables={{ title, composer }}
-              isTyping={isTyping}
-            />
-          </div>
-        </Content>
-      </Layout>
-    </GatsbyLayout>
+      }
+      footer={<></>}
+    >
+      <div className='search__content'>
+        <SearchManager variables={{ title, composer }} isTyping={isTyping} />
+      </div>
+    </Layout>
   );
 };
 

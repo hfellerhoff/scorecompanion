@@ -1,7 +1,7 @@
-import { Query, Resolver, Arg } from 'type-graphql';
+import { Query, Resolver, Arg, Float } from 'type-graphql';
 import { Work } from '../entity/Work';
 import { getConnection } from 'typeorm';
-// import { Score } from '../entity/Score';
+import worksByTitleAndComposerQuery from './WorkResolverQueries/worksByTitleAndComposer';
 
 @Resolver()
 export class WorkResolver {
@@ -40,19 +40,25 @@ export class WorkResolver {
   @Query(() => [Work])
   async worksByTitleAndComposer(
     @Arg('title', () => String) title: string,
+    @Arg('composer', () => String) composer: string,
+    @Arg('take', { defaultValue: 10 }) take: number,
+    @Arg('skip', { defaultValue: 0 }) skip: number
+  ) {
+    const query = worksByTitleAndComposerQuery(title, composer);
+
+    return query
+      .skip(skip)
+      .take(take)
+      .getMany(); // getManyAndCount in the future
+  }
+
+  @Query(() => Float)
+  async worksByTitleAndComposerCount(
+    @Arg('title', () => String) title: string,
     @Arg('composer', () => String) composer: string
   ) {
-    const connection = getConnection();
-    return connection
-      .getRepository(Work)
-      .createQueryBuilder('work')
-      .where('LOWER(work.title) like LOWER(:title)', {
-        title: '%' + title + '%',
-      })
-      .andWhere('LOWER(work.composer) like LOWER(:composer)', {
-        composer: '%' + composer + '%',
-      })
-      .leftJoinAndSelect('work.scores', 'score')
-      .getMany();
+    const query = worksByTitleAndComposerQuery(title, composer);
+
+    return query.getCount();
   }
 }

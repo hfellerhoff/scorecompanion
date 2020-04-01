@@ -17,8 +17,6 @@ const SearchParameterInput = (props: Props) => {
   const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout>();
 
   const onValuesChange = (_: FormVariables, values: FormVariables) => {
-    console.log(values);
-
     if (typingTimeout) {
       clearTimeout(typingTimeout);
     }

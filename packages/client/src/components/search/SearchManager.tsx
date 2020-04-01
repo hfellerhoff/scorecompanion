@@ -5,6 +5,7 @@ import SearchStateDisplay from './SearchStateDisplay';
 import SearchAlert from './SearchAlert';
 import { useQuery } from '@apollo/client';
 import './SearchManager.scss';
+import { WorkResultProps } from './WorkResult';
 
 interface SearchManagerProps {
   variables: {
@@ -12,6 +13,11 @@ interface SearchManagerProps {
     composer: string;
   };
   isTyping: boolean;
+}
+
+interface WorksByTitleAndComposerResult {
+  worksByTitleAndComposer: WorkResultProps[];
+  worksByTitleAndComposerCount: number;
 }
 
 // type SearchState = 'idle' | 'no-input' | 'loading' | 'error' | 'success';
@@ -28,30 +34,67 @@ const SearchManager = ({ variables, isTyping }: SearchManagerProps) => {
   if (isTyping) return <SearchStateDisplay state='loading' />;
   if (!fetch) return <SearchStateDisplay state='no-input' />;
 
-  const { loading, error, data, refetch } = useQuery(
+  const take = 10;
+  const [moreResults, setMoreResults] = useState(true);
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const { loading, error, data, refetch, fetchMore } = useQuery(
     getWorksByTitleAndComposer,
     {
-      variables: { ...variables },
+      variables: { ...variables, take, skip: 0 },
+      fetchPolicy: 'cache-and-network',
     }
   );
 
-  useEffect(() => {
-    console.log(variables);
+  const updateAndFetchMore = async () => {
+    setShouldAnimate(false);
+    setTimeout(async () => {
+      await fetchMore({
+        variables: { skip: data.worksByTitleAndComposer.length },
+        updateQuery: (
+          prev: WorksByTitleAndComposerResult,
+          { fetchMoreResult }
+        ) => {
+          if (!fetchMoreResult) return prev;
+          return {
+            worksByTitleAndComposer: [
+              ...prev.worksByTitleAndComposer,
+              ...fetchMoreResult.worksByTitleAndComposer,
+            ],
+          };
+        },
+      });
+      setShouldAnimate(true);
+    }, 0);
+  };
 
-    refetch(variables);
+  useEffect(() => {
+    refetch({ ...variables, take, skip: 0 });
   }, [variables]);
 
-  if (loading) return <SearchStateDisplay state='loading' />;
+  if (loading && !data) return <SearchStateDisplay state='loading' />;
 
   if (error) return <SearchAlert error={error} />;
 
-  if (data.worksByTitleAndComposer.length > 0)
+  if (
+    data.worksByTitleAndComposerCount <= data.worksByTitleAndComposer.length &&
+    moreResults
+  )
+    setMoreResults(false);
+
+  if (data.worksByTitleAndComposer.length > 0) {
     return (
       <>
-        <SearchAlert works={data.worksByTitleAndComposer} />
-        <WorkResultRoll works={data.worksByTitleAndComposer} />
+        <SearchAlert workCount={data.worksByTitleAndComposerCount} />
+        <WorkResultRoll
+          works={data.worksByTitleAndComposer || []}
+          loadMore={updateAndFetchMore}
+          hasMore={moreResults}
+          take={take}
+          shouldAnimate={shouldAnimate}
+        />
       </>
     );
+  }
 
   return <SearchStateDisplay state='no-results' />;
 };

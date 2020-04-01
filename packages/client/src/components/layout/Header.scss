@@ -1,0 +1,42 @@
+@import '../../styles/animations';
+
+$header-height: 60px;
+
+.header {
+  background: #ff9c6e;
+  // position: fixed;
+  width: 100%;
+  height: $header-height;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  transition: all 0.25s;
+  animation: fade-in 1s;
+
+  &--visible {
+    transform: translateY(0);
+  }
+
+  &--shadow {
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  &--hidden {
+    transform: translateY(-($header-height * 2));
+  }
+
+  &__content {
+    width: calc(100% - 40px);
+    max-width: 750px;
+    // background: red;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

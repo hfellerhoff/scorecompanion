@@ -7,5 +7,6 @@ temp/
 dump.rdb
 .env
 dist
+deploy.sh
 # Local Netlify folder
 .netlify

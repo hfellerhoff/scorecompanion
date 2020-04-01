@@ -5,11 +5,11 @@ import { Alert } from 'antd';
 import { ApolloError } from '@apollo/client';
 
 interface Props {
-  works?: WorkResultProps[];
+  workCount?: number;
   error?: ApolloError | undefined;
 }
 
-const SearchAlert = ({ works, error }: Props) => {
+const SearchAlert = ({ workCount, error }: Props) => {
   if (error) {
     return (
       <Alert
@@ -22,18 +22,13 @@ const SearchAlert = ({ works, error }: Props) => {
     );
   }
 
-  if (works) {
-    const numberOfWorks = works.length;
-    let numberOfScores = 0;
-    works.forEach(work => {
-      numberOfScores += work.scores.length;
-    });
-
+  if (workCount) {
     return (
       <Alert
         type='success'
         message='Good news!'
-        description={`We found ${numberOfWorks} works and ${numberOfScores} scores matching those query parameters.`}
+        description={`We found ${workCount} works matching those query parameters.`}
+        // and roughly ${Math.ceil(workCount * 3)} scores
         className='search-overview__alert'
         showIcon
       />

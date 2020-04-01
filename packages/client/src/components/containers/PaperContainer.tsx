@@ -1,5 +1,5 @@
 import React from 'react';
-import CenterContent, { CenterContentProps } from '../layout/CenterContent';
+import CenterContent, { CenterContentProps } from './CenterContent';
 import './PaperContainer.scss';
 
 interface Props extends CenterContentProps {

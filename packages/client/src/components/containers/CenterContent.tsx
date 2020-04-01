@@ -16,6 +16,7 @@ const CenterContent = (props: CenterContentProps) => {
     alignItems: horizontal ? 'center' : 'inherit',
     justifyContent: vertical ? 'center' : 'inherit',
     textAlign: centerText ? 'center' : 'left',
+    width: '100%',
   };
 
   return <div style={style}>{children}</div>;

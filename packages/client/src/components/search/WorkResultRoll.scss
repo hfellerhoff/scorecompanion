@@ -1,0 +1,11 @@
+.work-result-roll {
+  &__loading-button {
+    margin: 0px 0 60px 0;
+    width: 600px;
+
+    @media screen and (max-width: 640px) {
+      width: calc(100vw - 40px);
+      margin: 0 0 20px 0;
+    }
+  }
+}

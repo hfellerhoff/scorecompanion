@@ -1,6 +1,8 @@
 @import '../../styles/animations';
 
 .search {
+  min-height: 100vh;
+
   &__header {
     display: flex;
     flex-direction: column;
@@ -44,6 +46,8 @@
   }
 
   &__fade-to-home {
+    opacity: 0;
+
     animation: fade-to-home 0.25s;
   }
 }

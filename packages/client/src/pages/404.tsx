@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../components/layout/Layout';
+import SEO from '../components/SEO';
 import Title from 'antd/lib/typography/Title';
 import Text from 'antd/lib/typography/Text';
 import PaperContainer from '../components/containers/PaperContainer';
 import { Button } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Link } from 'gatsby';
+import PageTitles from '../typescript/PageTitles';
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title='404: Not found' />
+  <Layout title={PageTitles.NotFound} header={<></>} footer={<></>}>
     <div
       style={{
         display: 'flex',

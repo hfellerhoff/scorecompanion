@@ -1,21 +1,25 @@
-import React from 'react';
-import '../styles/index.css';
+import React, { useState } from 'react';
 
-import GatsbyLayout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../components/layout/Layout';
 import Hero from '../components/Hero';
-import { Layout } from 'antd';
-const { Footer: AntFooter, Content } = Layout;
+import PageTitles from '../typescript/PageTitles';
+import PaperContainer from '../components/containers/PaperContainer';
+import Title from 'antd/lib/typography/Title';
+import Text from 'antd/lib/typography/Text';
 
-const IndexPage = () => (
-  <GatsbyLayout>
-    <SEO title='Home' />
-    <Layout className='default-background'>
-      <Content>
-        <Hero />
-      </Content>
+const IndexPage = () => {
+  const [className, setClassName] = useState('');
+
+  return (
+    <Layout
+      title={PageTitles.Home}
+      className={className}
+      header={<></>}
+      footer={<></>}
+    >
+      <Hero onSearchPress={() => setClassName('hero__fade-to-search')} />
     </Layout>
-  </GatsbyLayout>
-);
+  );
+};
 
 export default IndexPage;

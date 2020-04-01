@@ -14,14 +14,6 @@
       }
     }
 
-    // @media screen and (max-height: 650px) {
-    //   margin-top: 0;
-    //   position: absolute;
-    //   bottom: 15vh;
-    //   left: 50%;
-    //   margin-left: -150px;
-    // }
-
     text-align: center;
     width: 300px;
 
@@ -31,6 +23,20 @@
     justify-content: center;
 
     animation: fade-in 1s;
+
+    &--end {
+      margin: 60px 0 80px 0;
+
+      text-align: center;
+      width: 300px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      animation: fade-in 1s;
+    }
   }
 
   &__text {
