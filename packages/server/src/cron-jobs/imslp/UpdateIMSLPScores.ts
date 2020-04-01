@@ -15,8 +15,8 @@ export const updateIMSLPScores = async () => {
 
   let start = 0; // Start index of request
   let limit = 1000; // Results per request. Max limit = 1000
-  const stopLimit = 160000; // Stop after this many individual work fetches
-  const batchSize = 25; // Amount of promises to evaluate at the same time. A large batch size risks a request-timeout if they cannot be evaluated quickly enough.
+  const stopLimit = 200000; // Stop after this many individual work fetches
+  const batchSize = 10; // Amount of promises to evaluate at the same time. A large batch size risks a request-timeout if they cannot be evaluated quickly enough.
   let shouldFetch = true; // Should another request be made
 
   while (shouldFetch) {
