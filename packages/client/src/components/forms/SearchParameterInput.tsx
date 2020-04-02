@@ -7,7 +7,6 @@ import {
   ExpandOutlined,
   CompressOutlined,
 } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
 
 interface Props {
   fetchWithValues: (values: FormVariables) => void;
@@ -39,8 +38,11 @@ const SearchParameterInput = (props: Props) => {
   };
 
   return (
-    <div className='search-parameter-input__form'>
-      <Form onValuesChange={onValuesChange}>
+    <div className='search-parameter-input'>
+      <Form
+        onValuesChange={onValuesChange}
+        className='search-parameter-input__form'
+      >
         <div className='search-parameter-input__form__first-line'>
           <Form.Item
             name='title'

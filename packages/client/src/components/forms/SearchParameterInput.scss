@@ -1,6 +1,12 @@
 .search-parameter-input {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   &__form {
-    margin-top: 15px;
     width: 100%;
     display: flex;
     flex-direction: column;
