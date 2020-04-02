@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score Companion GraphQL API</title>
+  </head>
+  <body>
+    <style>
+      * {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+          'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: linear-gradient(#ff9c6e, #ff7875);
+      }
+      div {
+        width: calc(100vw - 140px);
+        margin-left: -20px;
+        max-width: 500px;
+        background: white;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+
+        /* The top layer shadow */
+        box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15),
+          /* The second layer */ 0 -10px 0 -5px rgb(245, 245, 245),
+          /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.125),
+          /* The third layer */ 0 -20px 0 -10px #eee,
+          /* The third layer shadow */ 0 -20px 1px -9px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        font-weight: 600;
+        max-width: 400px;
+      }
+      p {
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+
+        width: 300px;
+        height: 50px;
+        border: none;
+        color: white;
+        background: linear-gradient(#ff9c6e, #ff7875);
+        border-radius: 10px;
+        font-size: 16px;
+        box-shadow: -3px 3px 3px 0px rgba(0, 0, 0, 0.1);
+
+        transition: all 0.2s;
+      }
+      button:hover {
+        cursor: pointer;
+        box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+      }
+      #button-playground {
+        background: #ff9c6e;
+      }
+      #button-main {
+        background: #ff7875;
+        margin-bottom: 40px;
+      }
+    </style>
+    <div>
+      <h1>Welcome to the Score Companion API!</h1>
+      <a href="https://api.scorecompanion.com/graphql">
+        <button id="button-playground">Visit the GraphQL Playground</button>
+      </a>
+      <a href="https://www.scorecompanion.com/">
+        <button id="button-main">Visit Score Companion</button>
+      </a>
+      <p><em>(Pardon our dust – we're still hard at work over here!)</em></p>
+    </div>
+  </body>
+</html>

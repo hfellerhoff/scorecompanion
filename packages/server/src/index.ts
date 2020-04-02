@@ -7,6 +7,8 @@ import { WorkResolver } from './resolvers/WorkResolver';
 import { updateIMSLPScores } from './cron-jobs/imslp/UpdateIMSLPScores';
 import { Work } from './entity/Work';
 import { Score } from './entity/Score';
+import { CountResolver } from './resolvers/CountResolver';
+import path from 'path';
 
 (async () => {
   const app = express();
@@ -26,12 +28,16 @@ import { Score } from './entity/Score';
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [WorkResolver],
+      resolvers: [WorkResolver, CountResolver],
       validate: true,
     }),
     introspection: true,
     playground: true,
     context: ({ req, res }) => ({ req, res }),
+  });
+
+  app.get('/', (_, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
   });
 
   apolloServer.applyMiddleware({ app, cors: true });
