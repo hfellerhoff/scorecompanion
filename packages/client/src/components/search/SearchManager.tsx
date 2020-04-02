@@ -13,6 +13,7 @@ interface SearchManagerProps {
     composer: string;
   };
   isTyping: boolean;
+  isExpanded: boolean;
 }
 
 interface WorksByTitleAndComposerResult {
@@ -22,7 +23,11 @@ interface WorksByTitleAndComposerResult {
 
 // type SearchState = 'idle' | 'no-input' | 'loading' | 'error' | 'success';
 
-const SearchManager = ({ variables, isTyping }: SearchManagerProps) => {
+const SearchManager = ({
+  variables,
+  isTyping,
+  isExpanded,
+}: SearchManagerProps) => {
   let fetch = false;
   const values = Object.values(variables);
   for (const value in values) {
@@ -69,7 +74,11 @@ const SearchManager = ({ variables, isTyping }: SearchManagerProps) => {
 
   useEffect(() => {
     refetch({ ...variables, take, skip: 0 });
-  }, [variables]);
+  }, [variables.composer, variables.title]);
+
+  useEffect(() => {
+    // if (data) setShouldAnimate(false);
+  }, [isExpanded]);
 
   if (loading && !data) return <SearchStateDisplay state='loading' />;
 
@@ -91,6 +100,7 @@ const SearchManager = ({ variables, isTyping }: SearchManagerProps) => {
           hasMore={moreResults}
           take={take}
           shouldAnimate={shouldAnimate}
+          isExpanded={isExpanded}
         />
       </>
     );

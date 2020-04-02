@@ -12,6 +12,7 @@ export interface WorkResultRollProps {
   hasMore: boolean;
   take: number;
   shouldAnimate: boolean;
+  isExpanded: boolean;
   // setShouldAnimate: (value: boolean) => void;
 }
 
@@ -21,6 +22,7 @@ const WorkResultRoll = ({
   loadMore,
   take,
   shouldAnimate,
+  isExpanded,
 }: // setShouldAnimate,
 WorkResultRollProps) => {
   // const [shouldAnimate, setShouldAnimate] = useState(true);
@@ -43,7 +45,14 @@ WorkResultRollProps) => {
         index >= fadeThreshold ? 'work-result--animate' : '';
       const className = shouldAnimate ? classNameToAdd : '';
       index += 1;
-      return <WorkResult {...work} className={className} key={v4()} />;
+      return (
+        <WorkResult
+          isExpanded={isExpanded}
+          {...work}
+          className={className}
+          key={v4()}
+        />
+      );
     });
 
     return elements;

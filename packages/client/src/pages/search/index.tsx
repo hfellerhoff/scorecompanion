@@ -19,11 +19,14 @@ const Search = () => {
   const [composer, setComposer] = useState('');
 
   const [isTyping, setIsTyping] = useState(false);
+  const [isExpandedView, setIsExpandedView] = useState(true);
 
   const onValuesChange = (values: FormVariables) => {
     setTitle(values.title || '');
     setComposer(values.composer || '');
   };
+
+  const toggleExpandedView = () => setIsExpandedView(!isExpandedView);
 
   return (
     <Layout
@@ -46,6 +49,8 @@ const Search = () => {
             <SearchParameterInput
               fetchWithValues={onValuesChange}
               setIsTyping={setIsTyping}
+              isExpanded={isExpandedView}
+              toggleIsExpanded={toggleExpandedView}
             />
           </div>
         </Header>
@@ -53,7 +58,11 @@ const Search = () => {
       footer={<></>}
     >
       <div className='search__content'>
-        <SearchManager variables={{ title, composer }} isTyping={isTyping} />
+        <SearchManager
+          variables={{ title, composer }}
+          isTyping={isTyping}
+          isExpanded={isExpandedView}
+        />
       </div>
     </Layout>
   );

@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Button, Switch } from 'antd';
 import './SearchParameterInput.scss';
-import { ContainerFilled, BulbFilled } from '@ant-design/icons';
+import {
+  ContainerFilled,
+  BulbFilled,
+  ExpandOutlined,
+  CompressOutlined,
+} from '@ant-design/icons';
+import Text from 'antd/lib/typography/Text';
 
 interface Props {
   fetchWithValues: (values: FormVariables) => void;
   setIsTyping: (value: boolean) => void;
+  isExpanded: boolean;
+  toggleIsExpanded: () => void;
 }
 
 export interface FormVariables {
@@ -35,30 +43,42 @@ const SearchParameterInput = (props: Props) => {
       className='search-parameter-input__form'
       onValuesChange={onValuesChange}
     >
-      <Form.Item
-        name='title'
-        className='search-parameter-input__input-container search-parameter-input__input-container--title'
-      >
-        <Input
-          prefix={<ContainerFilled />}
-          allowClear
-          size='large'
-          placeholder='Piece Title'
-          className='search-parameter-input__input search-parameter-input__input--title'
-        />
-      </Form.Item>
-      <Form.Item
-        name='composer'
-        className='search-parameter-input__input-container search-parameter-input__input-container--composer'
-      >
-        <Input
-          prefix={<BulbFilled />}
-          allowClear
-          size='large'
-          placeholder='Composer'
-          className='search-parameter-input__input search-parameter-input__input--composer'
-        />
-      </Form.Item>
+      <div className='search-parameter-input__form__first-line'>
+        <Form.Item
+          name='title'
+          className='search-parameter-input__input-container search-parameter-input__input-container--title'
+        >
+          <Input
+            prefix={<ContainerFilled />}
+            allowClear
+            size='large'
+            placeholder='Piece Title'
+            className='search-parameter-input__input search-parameter-input__input--title'
+          />
+        </Form.Item>
+        <Form.Item
+          name='composer'
+          className='search-parameter-input__input-container search-parameter-input__input-container--composer'
+        >
+          <Input
+            prefix={<BulbFilled />}
+            allowClear
+            size='large'
+            placeholder='Composer'
+            className='search-parameter-input__input search-parameter-input__input--composer'
+          />
+        </Form.Item>
+      </div>
+      <div className='search-parameter-input__form__second-line'>
+        <Button
+          type='link'
+          icon={props.isExpanded ? <CompressOutlined /> : <ExpandOutlined />}
+          className='search-parameter-input__form__view-toggle'
+          onClick={() => props.toggleIsExpanded()}
+        >
+          {'Switch to ' + (props.isExpanded ? 'Compact View' : 'Expanded View')}
+        </Button>
+      </div>
     </Form>
   );
 };

@@ -38,8 +38,25 @@
     margin-top: 2px;
   }
 
+  &__expand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    span,
+    span:visited {
+      color: #98989b;
+    }
+  }
+
   &__scores {
     margin-top: 10px;
+
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
   }
 
   &__score {

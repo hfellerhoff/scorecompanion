@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WorkResult.scss';
 import Title from 'antd/lib/typography/Title';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import Text from 'antd/lib/typography/Text';
-import { RightOutlined, ExportOutlined } from '@ant-design/icons';
+import {
+  RightOutlined,
+  ExportOutlined,
+  DownOutlined,
+  ExpandOutlined,
+  CompressOutlined,
+} from '@ant-design/icons';
 import { v4 } from 'uuid';
+import { Button } from 'antd';
 
 interface ScoreProps {
   description: string;
@@ -23,6 +30,7 @@ export interface WorkResultProps {
 
 interface Props extends WorkResultProps {
   className: string;
+  isExpanded: boolean;
 }
 
 const Score = ({ title, description, url }: ScoreProps) => {
@@ -51,7 +59,10 @@ const WorkResult = ({
   site,
   workUrl,
   className,
+  isExpanded,
 }: Props) => {
+  const [isExpandedLocal, setisExpandedLocal] = useState<boolean | undefined>();
+
   const numberOfScores = scores.length;
   let currentScore = 0;
 
@@ -70,11 +81,15 @@ const WorkResult = ({
     return 0;
   });
 
+  const shouldExpand =
+    isExpandedLocal !== undefined ? isExpandedLocal : isExpanded;
+
   return (
     <div className={`work-result__container ${className}`}>
       <div className='work-result__text-container'>
         <Text className='work-result__title'>{title}</Text>
         <Text className='work-result__composer'>{composer}</Text>
+        <Text className='work-result__score-count'>{`${scores.length} scores`}</Text>
       </div>
       <a href={workUrl} target='_blank' rel='noopener noreferrer'>
         <div className='work-result__site'>
@@ -83,19 +98,38 @@ const WorkResult = ({
         </div>
       </a>
       <div className='work-result__scores'>
-        {sortedScores.map(score => {
-          if (numberOfScores - 1 !== currentScore) {
-            currentScore += 1;
-            return (
-              <div key={v4()}>
-                <Score {...score} />
-                <div className='work-result__score__divider' />
-              </div>
-            );
-          } else {
-            return <Score key={v4()} {...score} />;
-          }
-        })}
+        <div className='work-result__expand'>
+          <Button
+            type='link'
+            className='work-result__expand__button'
+            icon={shouldExpand ? <CompressOutlined /> : <ExpandOutlined />}
+            onClick={() => {
+              if (isExpandedLocal === undefined)
+                setisExpandedLocal(!isExpanded);
+              else setisExpandedLocal(!isExpandedLocal);
+            }}
+          >
+            {shouldExpand ? 'Compress Result' : `Expand Result`}
+          </Button>
+        </div>
+
+        {shouldExpand ? (
+          sortedScores.map(score => {
+            if (numberOfScores - 1 !== currentScore) {
+              currentScore += 1;
+              return (
+                <div key={v4()}>
+                  <Score {...score} />
+                  <div className='work-result__score__divider' />
+                </div>
+              );
+            } else {
+              return <Score key={v4()} {...score} />;
+            }
+          })
+        ) : (
+          <></>
+        )}
       </div>
       <div className='work-result__badges'></div>
     </div>
