@@ -39,36 +39,35 @@ const SearchParameterInput = (props: Props) => {
   };
 
   return (
-    <Form
-      className='search-parameter-input__form'
-      onValuesChange={onValuesChange}
-    >
-      <div className='search-parameter-input__form__first-line'>
-        <Form.Item
-          name='title'
-          className='search-parameter-input__input-container search-parameter-input__input-container--title'
-        >
-          <Input
-            prefix={<ContainerFilled />}
-            allowClear
-            size='large'
-            placeholder='Piece Title'
-            className='search-parameter-input__input search-parameter-input__input--title'
-          />
-        </Form.Item>
-        <Form.Item
-          name='composer'
-          className='search-parameter-input__input-container search-parameter-input__input-container--composer'
-        >
-          <Input
-            prefix={<BulbFilled />}
-            allowClear
-            size='large'
-            placeholder='Composer'
-            className='search-parameter-input__input search-parameter-input__input--composer'
-          />
-        </Form.Item>
-      </div>
+    <div className='search-parameter-input__form'>
+      <Form onValuesChange={onValuesChange}>
+        <div className='search-parameter-input__form__first-line'>
+          <Form.Item
+            name='title'
+            className='search-parameter-input__input-container search-parameter-input__input-container--title'
+          >
+            <Input
+              prefix={<ContainerFilled />}
+              allowClear
+              size='large'
+              placeholder='Piece Title'
+              className='search-parameter-input__input search-parameter-input__input--title'
+            />
+          </Form.Item>
+          <Form.Item
+            name='composer'
+            className='search-parameter-input__input-container search-parameter-input__input-container--composer'
+          >
+            <Input
+              prefix={<BulbFilled />}
+              allowClear
+              size='large'
+              placeholder='Composer'
+              className='search-parameter-input__input search-parameter-input__input--composer'
+            />
+          </Form.Item>
+        </div>
+      </Form>
       <div className='search-parameter-input__form__second-line'>
         <Button
           type='link'
@@ -79,7 +78,7 @@ const SearchParameterInput = (props: Props) => {
           {'Switch to ' + (props.isExpanded ? 'Compact View' : 'Expanded View')}
         </Button>
       </div>
-    </Form>
+    </div>
   );
 };
 
