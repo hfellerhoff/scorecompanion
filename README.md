@@ -7,6 +7,10 @@
 # What is Score Companion?
 Score Companion is a free tool for searching for sheet music across a variety of popular sites. The site includes a sleek and responsive search tool, with a GraphQL API and a PostgreSQL database on the backend. Score Companion has almost 700,000 records in its database, which will only grow as we continue to add more sites.
 
+<p align='center'>
+  <img src='readme/showcase.gif' />
+</p>
+
 # Features
   - Free: Score Companion was created to help every musician find the sheet music they need, and will always be free to use.
   - Fast: Score Companion leverages the power of a custom GraphQL API to quickly search scores across a wide variety of sites.
