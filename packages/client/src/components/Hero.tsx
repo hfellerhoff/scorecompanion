@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SearchOutlined,
   CoffeeOutlined,
@@ -14,6 +14,10 @@ import Logo from './icons/Logo';
 import PaperContainer from './containers/PaperContainer';
 import { navigate } from 'gatsby';
 import LandingPageFeature from './LandingPageFeature';
+import CountUp from 'react-countup';
+import { useQuery } from '@apollo/client';
+import getCounts from '../graphql/queries/getCounts';
+import CountUpDisplay from './hero/CountUpDisplay';
 
 interface Props {
   onSearchPress: () => void;
@@ -57,8 +61,10 @@ const Hero = ({ onSearchPress }: Props) => {
             Search Now
           </Button>
         </PaperContainer>
+        <CountUpDisplay />
         <PaperContainer centerText horizontal fadeIn>
           <Title style={{ marginBottom: 0 }}>Why Score Companion?</Title>
+
           <LandingPageFeature
             icon={<SearchOutlined />}
             title='One, Centralized, Score-Finding Machine'

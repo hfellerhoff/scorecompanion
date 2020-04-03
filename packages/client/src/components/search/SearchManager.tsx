@@ -21,8 +21,6 @@ interface WorksByTitleAndComposerResult {
   worksByTitleAndComposerCount: number;
 }
 
-// type SearchState = 'idle' | 'no-input' | 'loading' | 'error' | 'success';
-
 const SearchManager = ({
   variables,
   isTyping,

@@ -1,0 +1,53 @@
+@import '../../styles/animations';
+
+.count-up-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+
+  width: calc(100% - 40px);
+  max-width: 750px;
+
+  &__block {
+    flex: 1;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+    // border-radius: 10px;
+    // box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15);
+
+    &--one {
+      margin-right: 10px;
+    }
+
+    &--two {
+      margin: 0 10px;
+    }
+
+    &--three {
+      margin-left: 10px;
+    }
+
+    /* The top layer shadow */
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15),
+      /* The second layer */ 0 -10px 0 -5px rgb(245, 245, 245),
+      /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.125),
+      /* The third layer */ 0 -20px 0 -10px #eee,
+      /* The third layer shadow */ 0 -20px 1px -9px rgba(0, 0, 0, 0.1);
+
+    animation: slide-in 1s;
+  }
+
+  &__number {
+    font-size: 32px;
+  }
+
+  &__label {
+    font-size: 16px;
+  }
+}
