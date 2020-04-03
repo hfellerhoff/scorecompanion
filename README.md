@@ -1,6 +1,6 @@
 <a href="https://www.openipa.org">
 <p align='center'>
-  <img src='readme/logo-tagline-wide.png' width='600' height='200' />
+  <img src='readme/logo-tagline-wide.png' width='500' height='200' />
 </p>
 
 # What is Score Companion?
