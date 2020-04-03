@@ -10,7 +10,7 @@ RUN yarn install --production
 
 COPY ./packages/server/dist ./packages/server/dist
 COPY ./packages/common/dist ./packages/common/dist
-# COPY ./packages/server/src/index.html ./packages/server/dist/
+COPY ./packages/server/src/index.html ./packages/server/dist
 COPY ./ormconfig.js .
 
 WORKDIR /scorecompanion/packages/server
