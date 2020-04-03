@@ -18,7 +18,7 @@ const CountUpDisplay = () => {
   } = useCountUp({
     end: 0,
     formattingFn: addCommasToNumber,
-    duration: 5,
+    duration: 3,
   });
   const {
     countUp: workCount,
@@ -27,7 +27,7 @@ const CountUpDisplay = () => {
   } = useCountUp({
     end: 0,
     formattingFn: addCommasToNumber,
-    duration: 5,
+    duration: 3,
   });
   const {
     countUp: scoreCount,
@@ -36,7 +36,7 @@ const CountUpDisplay = () => {
   } = useCountUp({
     end: 0,
     formattingFn: addCommasToNumber,
-    duration: 5,
+    duration: 3,
   });
 
   useEffect(() => {

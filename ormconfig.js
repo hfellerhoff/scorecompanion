@@ -17,16 +17,8 @@ module.exports = [
   {
     name: 'production',
     type: 'postgres',
-    synchronize: false,
+    synchronize: true,
     logging: false,
     url: process.env.DATABASE_URL,
-    entities: ['dist/entity/**/*.js'],
-    migrations: ['dist/migration/**/*.js'],
-    subscribers: ['dist/subscriber/**/*.js'],
-    cli: {
-      entitiesDir: 'dist/entity',
-      migrationsDir: 'dist/migration',
-      subscribersDir: 'dist/subscriber',
-    },
   },
 ];
