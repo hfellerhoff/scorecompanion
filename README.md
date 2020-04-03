@@ -1,6 +1,6 @@
 <a href="https://www.scorecompanion.com">
 <p align='center'>
-  <img src='readme/logo-tagline-wide.png' width='500' height='200' />
+  <img src='readme/logo-tagline-wide.png' width='450' height='200' />
 </p>
 
 # What is Score Companion?
