@@ -5,10 +5,30 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 40px;
-
   width: calc(100% - 40px);
   max-width: 750px;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 770px) {
+    flex-direction: column;
+  }
+
+  &__block-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 100%;
+
+    &--top {
+      flex: 2;
+    }
+
+    &--bottom {
+      flex: 1;
+    }
+  }
 
   &__block {
     flex: 1;
@@ -18,19 +38,37 @@
     justify-content: center;
     flex-direction: column;
     background: white;
-    // border-radius: 10px;
-    // box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15);
+
+    @media screen and (max-width: 770px) {
+      height: 160px;
+      width: 100%;
+    }
 
     &--one {
       margin-right: 10px;
+
+      @media screen and (max-width: 770px) {
+        flex: 2;
+        margin-right: 5px;
+      }
     }
 
     &--two {
       margin: 0 10px;
+      @media screen and (max-width: 770px) {
+        flex: 3;
+        margin-right: 0;
+        margin-left: 5px;
+      }
     }
 
     &--three {
       margin-left: 10px;
+
+      @media screen and (max-width: 770px) {
+        margin-left: 0;
+        margin-top: 20px;
+      }
     }
 
     /* The top layer shadow */
