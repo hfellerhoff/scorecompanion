@@ -1,4 +1,4 @@
-<a href="https://www.openipa.org">
+<a href="https://www.scorecompanion.com">
 <p align='center'>
   <img src='readme/logo-tagline-wide.png' width='500' height='200' />
 </p>
