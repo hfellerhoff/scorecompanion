@@ -5,7 +5,7 @@ import {
   ContainerFilled,
   BulbFilled,
   ExpandOutlined,
-  CompressOutlined,
+  CompressOutlined
 } from '@ant-design/icons';
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
   setIsTyping: (value: boolean) => void;
   isExpanded: boolean;
   toggleIsExpanded: () => void;
+  variables: FormVariables;
 }
 
 export interface FormVariables {
@@ -21,6 +22,9 @@ export interface FormVariables {
 }
 
 const SearchParameterInput = (props: Props) => {
+  const {
+    variables: { title, composer }
+  } = props;
   const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout>();
 
   const onValuesChange = (_: FormVariables, values: FormVariables) => {
@@ -50,6 +54,7 @@ const SearchParameterInput = (props: Props) => {
           >
             <Input
               prefix={<ContainerFilled />}
+              defaultValue={title || ''}
               allowClear
               size='large'
               placeholder='Piece Title'
@@ -62,6 +67,7 @@ const SearchParameterInput = (props: Props) => {
           >
             <Input
               prefix={<BulbFilled />}
+              defaultValue={composer || ''}
               allowClear
               size='large'
               placeholder='Composer'

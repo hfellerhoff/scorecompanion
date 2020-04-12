@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/layout/Layout';
 import SearchParameterInput, {
-  FormVariables,
+  FormVariables
 } from '../../components/forms/SearchParameterInput';
 import Logo from '../../components/icons/Logo';
 import { navigate } from 'gatsby';
@@ -19,7 +19,18 @@ const Search = () => {
   const [composer, setComposer] = useState('');
 
   const [isTyping, setIsTyping] = useState(false);
-  const [isExpandedView, setIsExpandedView] = useState(true);
+  const [isExpandedView, setIsExpandedView] = useState(false);
+
+  const queryString =
+    typeof window !== `undefined` ? window.location.search : '';
+  const urlParams = new URLSearchParams(queryString);
+  const titleParameter = urlParams.get('title');
+  const composerParameter = urlParams.get('composer');
+
+  useEffect(() => {
+    if (titleParameter) setTitle(titleParameter);
+    if (composerParameter) setComposer(composerParameter);
+  }, []);
 
   const onValuesChange = (values: FormVariables) => {
     setTitle(values.title || '');
@@ -51,6 +62,10 @@ const Search = () => {
               setIsTyping={setIsTyping}
               isExpanded={isExpandedView}
               toggleIsExpanded={toggleExpandedView}
+              variables={{
+                title: titleParameter || undefined,
+                composer: composerParameter || undefined
+              }}
             />
           </div>
         </Header>
